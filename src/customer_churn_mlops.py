@@ -17,7 +17,7 @@ def reset_seeds():
     random.seed(42)
 
 def read_data():
-    url = 'https://raw.githubusercontent.com/andresakmr/customer_churn_mlops/master/Customer-Churn-Records.csv'
+    url = 'https://raw.githubusercontent.com/andresakmr/customer_churn_mlops/master/data/Customer-Churn-Records.csv'
     data = pd.read_csv(url)
     # Já limpando o 'Complain' para evitar leakage feature
     X = data.drop(['RowNumber', 'CustomerId', 'Surname', 'Exited', 'Complain'], axis=1)
