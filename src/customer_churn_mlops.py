@@ -47,7 +47,9 @@ def create_model(X):
     return model
 
 def config_mlflow():
-    dagshub.init(repo_owner='andresakmr', repo_name='customer_churn_mlops', mlflow=True)
+    token = os.getenv("DAGSHUB_TOKEN")
+    if token:
+        dagshub.init(repo_owner='andresakmr', repo_name='customer_churn_mlops', mlflow=True)
     mlflow.keras.autolog(log_models=True, log_input_examples=True, log_model_signatures=True)
 
 def train_model(model, X_train, y_train):

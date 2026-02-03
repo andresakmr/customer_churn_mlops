@@ -51,9 +51,10 @@ jobs:
             if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
         - name: Train Model
-          env: 
-            MLFLOW_TRACKING_USERNAME: andresakmr
-            MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
-            DAGSHUB_USER_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
+          env:
+          MLFLOW_TRACKING_USERNAME: andresakmr
+          MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
+          DAGSHUB_USER_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
+          DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
           run: |
-            python src/customer_churn_mlops.py
+          python src/customer_churn_mlops.py
