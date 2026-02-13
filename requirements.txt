@@ -11,4 +11,4 @@ pydantic==2.9.2
 python-multipart==0.0.12
 requests==2.32.3
 dagshub      
-scikit-learn   
+scikit-learn==1.6.1
