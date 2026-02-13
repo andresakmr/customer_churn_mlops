@@ -6,6 +6,8 @@ Este projeto utiliza Redes Neurais para prever a probabilidade de rotatividade d
 
  **Objetivo**: Desenvolver um modelo capaz de identificar clientes com alto risco de cancelamento, permitindo que a equipe de retenção tome medidas proativas.
 
+ **Status:** Concluído / Validado em ambiente local
+
 ## Tecnologias e Ferramentas
 Linguagem: Python 3.10+
 
@@ -19,11 +21,31 @@ Ambiente: Conda / Anaconda
 
 Controle de Versão: Git / GitHub
 
+Containerização: Docker 
+
+Testes de Performance: Locust (validação de carga e latência).
+
+Automação (CI/CD): GitHub Actions (pipeline automatizado via YAML).
+
+Monitoramento de Dados: KS-Test (Kolmogorov-Smirnov) para detecção manual de Data Drift.
+
+Pré-processamento: Scikit-Learn (Pipelines e Scalers serializados).
+
 ## Estrutura do Repositório
 
 src/: Scripts de treinamento e predição.
 
 data/: Dataset utilizado (Customer-Churn-Records.csv).
+
+docs/: Documentação visual e prints de validação
+
+Dockerfile: Configuração da imagem para deploy.
+
+locustfile.py: Script de teste de estresse da API.
+
+scaler.pkl: Objeto de normalização dos dados para inferência.
+
+workflow/: Definições do pipeline de CI/CD.
 
 environment.yml: Configuração do ambiente Conda.
 
@@ -32,13 +54,9 @@ requirements.txt: Dependências do Python via Pip.
 ## Ficha Técnica do Modelo
 Algoritmo: Rede Neural Sequencial (Multilayer Perceptron).
 
-Arquitetura: * Camada de Entrada (16 neurônios).
+Arquitetura: *Entrada (16) -> Ocultas (10, 10) -> Saída (Sigmoid).
 
-2 Camadas Ocultas (10 neurônios cada, ativação ReLU).
-
-Camada de Saída (1 neurônio, ativação Sigmoid).
-
-Métrica Final (Acurácia): ~86% (Versão realista, sem Data Leakage).
+Métrica Final (Acurácia): ~86%
 
 Dataset: 10.000 registros com 18 variáveis originais.
 
