@@ -51,10 +51,30 @@ environment.yml: Configuração do ambiente Conda.
 
 requirements.txt: Dependências do Python via Pip.
 
+## Validação e Qualidade (QA)
+
+**Teste de Carga (Locust)**
+
+A API foi submetida a um teste de estresse simulando 500 usuários simultâneos requisitando o endpoint /predict.
+
+Resultado: 0% de falhas.
+
+Performance: A aplicação manteve-se resiliente sob alta carga, validando a robustez da containerização.
+
+Abaixo, o resultado do teste de carga realizado com o Locust, validando a estabilidade da API com 500 usuários simultâneos e 0% de falhas:
+
+![Teste de Carga Locust](docs/print_locust.png)
+
+**Detecção de Data Drift**
+
+Devido à necessidade de um monitoramento leve e direto, foi implementado o Teste Kolmogorov-Smirnov (KS) manual. Objetivo: Comparar a distribuição dos dados de treino vs. dados reais.
+
+Conclusão: O modelo foi validado para garantir que as previsões continuem precisas mesmo com mudanças nas variáveis de entrada (p-value > 0.05).
+
 ## Ficha Técnica do Modelo
 Algoritmo: Rede Neural Sequencial (Multilayer Perceptron).
 
-Arquitetura: *Entrada (16) -> Ocultas (10, 10) -> Saída (Sigmoid).
+Arquitetura: Entrada (16) -> Ocultas (10, 10) -> Saída (Sigmoid).
 
 Métrica Final (Acurácia): ~86%
 
